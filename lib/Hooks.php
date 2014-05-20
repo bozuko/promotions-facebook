@@ -21,7 +21,10 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
     if( $_SERVER['REQUEST_METHOD'] !== 'GET' ) return;
     if( !get_field('fb_tab_redirection') ) return;
     if( !($url = get_field('fb_tab_url')) ) return;
-    if( Snap::inst('Mobile_Detect')->is_mobile() ) return;
+    
+    if( Snap::inst('Mobile_Detect')->isMobile() ) return;
+    
+    
     wp_redirect($url);
     exit;
   }
@@ -72,7 +75,7 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
           }
         }
       }
-      
+      /*
       if( ($first_name = $form->get_field('first_name')) && !$first_name->get_value() ){
         $first_name->set_value( $user->getProperty('first_name') );
       }
@@ -82,6 +85,7 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
       if( ($email = $form->get_field('email')) && !$email->get_value() ){
         $email->set_value( $user->getProperty('email') );
       }
+      */
     }
     
     
