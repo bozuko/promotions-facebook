@@ -23,7 +23,7 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
     if( !($url = get_field('fb_tab_url')) ) return;
     
     if( Snap::inst('Mobile_Detect')->isMobile() ) return;
-    
+    if( @$_GET['success'] ) return;
     
     wp_redirect($url);
     exit;
@@ -37,8 +37,8 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
   {
     if( !Snap::inst('Promotions_Functions')->is_enabled('facebook') ) return;
     
-    // We need this get IE to work 
-    header("p3p: CP=\"ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV\"");
+    // We need this get IE to allow cookies
+    header('P3P: CP="P3P is outdated and thus we do not support it."');
     
     Snap::inst('PromotionsFacebook_Functions')->init(
       get_field('fb_app_id'), get_field('fb_app_secret')
