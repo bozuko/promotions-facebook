@@ -10,6 +10,10 @@ class PromotionsFacebook_Form_Field_FacebookId extends Snap_Wordpress_Form2_Fiel
   
   public function init()
   {
+    // we don't want to autopopulate this field
+    // if we re in the admin environment
+    if( is_admin() ) return;
+    
     // this automatically sets Facebook ID
     $user = Snap::inst('PromotionsFacebook_Functions')->get_user();
     if( $user ){

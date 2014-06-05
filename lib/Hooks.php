@@ -8,6 +8,7 @@ class PromotionsFacebook_Hooks extends Snap_Wordpress_Plugin
    */
   public function register_form_field( $form2 )
   {
+    //print_r(array(Snap::inst('Promotions_Functions')->is_enabled('facebook'), get_the_ID()));
     if( !Snap::inst('Promotions_Functions')->is_enabled('facebook') ) return;
     $form2->register('PromotionsFacebook_Form_Field_FacebookId');
   }
